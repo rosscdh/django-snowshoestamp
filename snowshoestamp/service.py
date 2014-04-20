@@ -31,7 +31,7 @@ class SnowshoeStampWebhookService(object):
         if self.stamp_data is not None:
 
             # pop the stamp_serial from the data so its not repeated
-            self.stamp_serial = stamp_data.pop('serial', None)
+            self.stamp_serial = self.stamp_data.pop('serial', None)
 
             if self.stamp_serial is not None:
                 snowshoestamp_event.send(sender=self, stamp_serial=stamp_serial, **self.stamp_data)
