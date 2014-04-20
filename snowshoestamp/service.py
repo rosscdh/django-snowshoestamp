@@ -19,7 +19,7 @@ class SnowshoeStampWebhookService(object):
     def __init__(self, *args, **kwargs):
         # Allow overrides
         self.key = kwargs.get('key', SNOWSHOESTAMP_KEY)
-        self.secret = kwargs.get('key', SNOWSHOESTAMP_SECRET)
+        self.secret = kwargs.get('secret', SNOWSHOESTAMP_SECRET)
         self.client = Client(self.key, self.secret)
 
     def process(self, post_data):
