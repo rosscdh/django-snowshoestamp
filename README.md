@@ -10,7 +10,9 @@ Installation
 1. python setup.py
 2. pip install requirements.txt
 3. add snowshoestamp to INSTALLED_APPS
-4. add 'sss' to urls
+4. create custom class that inherits from SnowshoeStampView
+5. add path to your custom view to your apps primary urls
+6. register custom url with snowsheostamp
 
 Settings
 --------
@@ -23,16 +25,9 @@ SNOWSHOESTAMP_SECRET : the oauth secret for your app
 ```
 
 
-__Optional__
-
-```
-SNOWSHOESTAMP_CALLBACK_VIEW: A custom view that you can use to process callbacks
-```
-
-
 __Please Note__
 
-A signal will also be issued when recieving callbacks from snowshoestamp
+A signal will be issued when recieving callbacks from snowshoestamp
 
 ```
 snowshoestamp_event

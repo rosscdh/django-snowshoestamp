@@ -39,3 +39,5 @@ class SnowshoeStampWebhookService(object):
             # issue the signal
             #if self.stamp_serial is not None:
             snowshoestamp_event.send(sender=self, stamp_serial=stamp_serial, **self.stamp_data)
+
+        return self.stamp_data
