@@ -45,3 +45,4 @@ __TODO__
 2. more descriptive readme.md
 3. improve setup.py to install from requirements
 4. make recommendations for renaming of python_sdk to snowshoestamp.sssapi as python_sdk is VERy generic
+5. make use of https://github.com/snowshoestamp/touchy_sdk and pusher for auth prompt
