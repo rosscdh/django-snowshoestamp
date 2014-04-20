@@ -1,2 +1,3 @@
 requests_oauthlib
+-e git+https://github.com/snowshoestamp/python_sdk.git#egg=python_sdk
 django-braces

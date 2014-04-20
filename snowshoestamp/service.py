@@ -22,10 +22,13 @@ class SnowshoeStampWebhookService(object):
         self.secret = kwargs.get('key', SNOWSHOESTAMP_SECRET)
         self.client = Client(self.key, self.secret)
 
-    def process(self, data):
+    def process(self, post_data):
         """
         Method to process the callback data
         """
+        data = client.call({'data': post_data.get('data')})
+
+
         self.stamp_data = data.get('stamp', None)
 
         if self.stamp_data is not None:
