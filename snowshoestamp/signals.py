@@ -2,7 +2,7 @@
 """
 Webhook signals
 """
-from django.dispatch import Signal, receiver
+from django.dispatch import Signal
 
 #
 # Outgoing Events

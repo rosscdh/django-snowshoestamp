@@ -17,7 +17,9 @@ Installation
 Settings
 --------
 
+
 __Required__
+
 
 ```
 SNOWSHOESTAMP_KEY : the oauth key for your app
@@ -25,20 +27,51 @@ SNOWSHOESTAMP_SECRET : the oauth secret for your app
 ```
 
 
+__Example Implementation__
+
+
+```views.py
+from snowshoestamp.views import SnowshoeStampView
+
+
+class MyCustomView(SnowshoeStampView):
+    def post(self, request, *args, **kwargs):
+        print(self.stamp_serial)
+        print(self.stamp_data)
+
+        # do something amazing
+
+        return self.render_json_response({
+            'detail': 'Snowshoestamp Callback recieved',
+            'stamp_data': self.stamp_data
+        })
+```
+
+
 __Please Note__
 
 A signal will be issued when recieving callbacks from snowshoestamp
 
-```
-snowshoestamp_event
+
+__Signal Example Implementation__
+
+
+```signals.py
+from django.dispatch import receiver
+
+from snowshoestamp.signals import snowshoestamp_event
+
+
+@receiver(snowshoestamp_event)
+def on_snowshoestamp_callback(sender, stamp_serial, **kwargs):
+    # do something amazing with the data in the kwargs dict
+    pass
 ```
 
 
 __TODO__
 
 1. tests
-2. more descriptive readme.md
+2. ~~more descriptive readme.md~~
 3. improve setup.py to install from requirements
 4. make recommendations for renaming of python_sdk to snowshoestamp.sssapi as python_sdk is VERy generic
-5. make use of https://github.com/snowshoestamp/touchy_sdk and pusher for auth prompt
-6. better logs

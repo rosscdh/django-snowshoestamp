@@ -15,6 +15,15 @@ class SnowshoeStampView(JSONResponseMixin, View):
     """
     template = None
     json_dumps_kwargs = {'indent': 3}
+    service = None
+    stamp_serial = None
+    stamp_data = None
+
+    def dispatch(self, request, *args, **kwargs):
+        logger.info('Recieved snowshoestamp webhook')
+        self.service = SnowshoeStampWebhookService()
+        self.stamp_serial, self.stamp_data = service.process(data=request.POST)
+        return super(SnowshoeStampView, self).dispatch(request=request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
         context_dict = {
@@ -23,12 +32,7 @@ class SnowshoeStampView(JSONResponseMixin, View):
         return self.render_json_response(context_dict)
 
     def post(self, request, *args, **kwargs):
-        logger.info('Recieved snowshoestamp webhook')
-
-        service = SnowshoeStampWebhookService()
-        stamp_data = service.process(data=request.POST)
-
         return self.render_json_response({
             'detail': 'Snowshoestamp Callback recieved',
-            'stamp_data': stamp_data
+            'stamp_data': self.stamp_data
         })
