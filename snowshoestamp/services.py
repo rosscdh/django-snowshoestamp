@@ -28,11 +28,11 @@ class SnowshoeStampWebhookService(object):
         self.stamp_data = None
         self.stamp_serial = None
 
-    def process(self, post_data):
+    def process(self, data):
         """
         Method to process the callback data
         """
-        data = client.call({'data': post_data.get('data')})
+        data = self.client.call({'data': data.get('data')})
 
         self.stamp_data = data.get('stamp', None)
 
