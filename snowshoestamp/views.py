@@ -26,7 +26,6 @@ class SnowshoeStampView(JSONResponseMixin, View):
         self.service = SnowshoeStampWebhookService()
 
         if request.method.lower() in self.http_method_names:
-            import pdb;pdb.set_trace()
             self.stamp_serial, self.stamp_data = self.service.process(data=request.POST)
 
         return super(SnowshoeStampView, self).dispatch(request=request, *args, **kwargs)

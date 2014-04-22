@@ -11,4 +11,9 @@ setup(
     description="A Django app for integrating with snowshoestamp",
     zip_safe=False,
     include_package_data=True,
+    install_requires = [
+        'sssapi',
+        'requests_oauthlib',
+        'django-braces',
+    ]
 )

@@ -29,4 +29,4 @@ class SnowshoeStampViewTest(TestCase):
 
     def test_valid_method(self):
         resp = self.client.post(self.url, self.valid_webhook_data)
-        self.assertEqual(resp.status_code, 200))
+        self.assertEqual(resp.status_code, 200)
