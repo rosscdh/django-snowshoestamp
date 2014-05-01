@@ -1,0 +1,49 @@
+{% extends 'snowshoestamp/base.html' %}
+
+{% block body %}
+<div id="hero">
+    <div class="container">
+        <!-- starts carousel -->
+        <div class="jumbotron">
+            <div class="span12">
+                <h1>Using your mobile phone<br/><small>Touch the token to the screen at the following url:</small></h1>
+                <div><a href="http://beta.snowshoestamp.com/applications/client/e4f2e47da7338fc8d435/">http://beta.snowshoestamp.com/applications/client/e4f2e47da7338fc8d435/</a></div>
+                <small><b>**</b>token will have been provided to you by your lawyer.</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script src="//cdnjs.cloudflare.com/ajax/libs/pusher/2.1.6/pusher.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function ready() {
+    var pusher = new Pusher('{{ GLOBALS.PUSHER_KEY }}');
+    var channel = pusher.subscribe('sss-{{ source_object.pk }}');
+    channel.bind('auth', function(data) {
+        console.log('got event: ' + data)
+        $.ajax({
+            url: '.',
+            type: "POST",
+            data: data,
+            dataType: 'json',
+            beforeSend: function (jqXHR, settings) {
+                // Pull the token out of the DOM.
+                jqXHR.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
+            }
+        }).success(function( data, _, xhr ) {
+            console.log(data)
+            var redirect_url = data.redirect;
+            if (redirect_url) {
+                window.location = redirect_url;
+            }
+        }).error(function( xhr ) {
+            alert('error')
+        });
+    });
+});
+</script>
+{% endblock %}

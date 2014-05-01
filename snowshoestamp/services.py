@@ -37,7 +37,7 @@ class SnowshoeStampWebhookService(object):
         self.stamp_data = data.get('stamp', None)
 
         if self.stamp_data is not None:
-            logger.info('Provided with stamp data')
+            logger.info('Provided with stamp data: %s' % data)
             # pop the stamp_serial from the data so its not repeated
             self.stamp_serial = self.stamp_data.pop('serial', None)
             logger.info('Provided with stamp serial: %s' % self.stamp_serial)
