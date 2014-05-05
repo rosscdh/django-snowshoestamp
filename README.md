@@ -74,5 +74,4 @@ __TODO__
 1. tests
 2. ~~more descriptive readme.md~~
 3. improve setup.py to install from requirements
-4. make recommendations for renaming of python_sdk to snowshoestamp.sssapi as python_sdk is VERy generic
-5. fix broken python_sdk install cant install from pip lacks setup.py
+4. ~~fix broken python_sdk install cant install from pip lacks setup.py~~
