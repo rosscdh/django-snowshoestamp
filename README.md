@@ -52,7 +52,7 @@ class MySnowshoestampWebhookRecieverView(SnowshoeStampView):
 
 __Please Note__
 
-A signal will be issued when recieving callbacks from snowshoestamp
+If you use the SnowshoeStampView then a signal will be issued when recieving callbacks from snowshoestamp, which you can then listen for and do other amazing things.
 
 
 __Signal Example Implementation__
