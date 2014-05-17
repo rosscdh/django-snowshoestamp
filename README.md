@@ -30,13 +30,15 @@ __Example Implementation__
 
 1. Setup your urls.py to use the view below as the callback reciever or just use the default sss reciever
 2. Register the url "https://yourhost.com/sss/webhook/" as the webhook callback at snowshoestamp
+3. and that is it, you can now hook up the signal listener and get a signal event whenever a webhook event happens
 
 ```
 url(r'^sss/', include('snowshoestamp.urls', namespace='snowshoestamp')),
 ```
 
+__Or__
 
-You can write a custom view, by extending our View and doing somethign more specific with the data
+You can write a custom view, by extending our View and doing somethign more specific with the data, and hook the view up to a url and register that url with snowshoestamp.
 
 ```views.py
 from snowshoestamp.views import SnowshoeStampView
