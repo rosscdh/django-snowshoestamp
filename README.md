@@ -81,7 +81,7 @@ def on_snowshoestamp_callback(sender, stamp_serial, **kwargs):
 
 __TODO__
 
-1. tests
+1. ~~tests~~
 2. ~~more descriptive readme.md~~
 3. improve setup.py to install from requirements
 4. ~~fix broken python_sdk install cant install from pip lacks setup.py~~
