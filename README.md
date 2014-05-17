@@ -10,9 +10,8 @@ Installation
 1. python setup.py
 2. pip install requirements.txt
 3. add snowshoestamp to INSTALLED_APPS
-4. create custom class that inherits from SnowshoeStampView
-5. add path to your custom view to your apps primary urls
-6. register custom url with snowsheostamp
+4. add url to sss endpoint
+5. register url with snowsheostamp as webhook callback
 
 Settings
 --------
