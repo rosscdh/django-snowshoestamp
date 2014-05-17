@@ -29,8 +29,15 @@ SNOWSHOESTAMP_SECRET : the oauth secret for your app
 
 __Example Implementation__
 
-1. Setup your urls.py to use the view below as the callback reciever
-2. Register the url for view below as the webhook callback at snowshoestamp
+1. Setup your urls.py to use the view below as the callback reciever or just use the default sss reciever
+2. Register the url "https://yourhost.com/sss/webhook/" as the webhook callback at snowshoestamp
+
+```
+url(r'^sss/', include('snowshoestamp.urls', namespace='snowshoestamp')),
+```
+
+
+You can write a custom view, by extending our View and doing somethign more specific with the data
 
 ```views.py
 from snowshoestamp.views import SnowshoeStampView
