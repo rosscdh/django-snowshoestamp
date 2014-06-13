@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name="snowshoestamp",
+    name="django-snowshoestamp",
     packages=['snowshoestamp'],
     version='0.1.0',
     author="Ross Crawford-d'Heureuse",
